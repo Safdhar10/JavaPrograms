@@ -22,7 +22,10 @@ public class Sample {
         //ArmstrongNumberBetweenN(200);
         //#endregion
         //#region 9. Perfect Square Or Not
-        System.out.println(IsPerfectSquare(5));
+        //System.out.println(IsPerfectSquare(5));
+        //#endregion
+        //#region 10. Perfect Square Number between N
+        PerfectSquareBetweenN(30);
         //#endregion
     }
 //#region 1. Maximum Number that divides all the digits of the given number
@@ -201,6 +204,19 @@ public static Boolean IsPerfectSquare(double n)
           return false;
       }*/
       
+}
+//#endregion
+
+//#region 10. All Perfect Square Between N
+public static void PerfectSquareBetweenN(int N)
+{
+    for(int i=1;i<=N;i++)
+    {
+        if(IsPerfectSquare(i))
+        {
+            System.out.println(i);
+        }
+    }
 }
 //#endregion
 }
