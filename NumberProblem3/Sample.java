@@ -1,5 +1,6 @@
 package NumberProblem3;
 
+
 public class Sample {
     public static void main(String[] args) {
         //#region 1. Maximum Number that divides all the digits of the given number
@@ -15,7 +16,13 @@ public class Sample {
          //System.out.println(NisPowerOfK(16, 2));
         //#endregion
         //#region 7. Armstrong Number
-        System.out.println(IsArmstrong(371));
+        //System.out.println(IsArmstrong(371));
+        //#endregion
+        //#region 8. Armstrong Number Between N
+        //ArmstrongNumberBetweenN(200);
+        //#endregion
+        //#region 9. Perfect Square Or Not
+        System.out.println(IsPerfectSquare(5));
         //#endregion
     }
 //#region 1. Maximum Number that divides all the digits of the given number
@@ -135,6 +142,65 @@ public static Boolean IsArmstrong(int n)
     {
         return false;
     }
+}
+public static Integer ArmstrongNumber(int n)
+{
+    int Digit=(int)Math.floor(Math.log10(n))+1;
+    int GetResult=0;
+    int Number=n;
+    for(int i=1;i<=Digit;i++)
+    {
+        int GetDigit=Number%10;
+        GetResult+=(int)Math.pow(GetDigit, Digit);
+        Number/=10;
+    }
+    if(GetResult==n)
+    {
+        return GetResult;
+    }
+    else
+    {
+        return null;
+    }
+}
+//#endregion
+
+//#region 8. Find The Armstrong Number Between Interval
+public static void ArmstrongNumberBetweenN(int N)
+{
+    for(int i=1;i<=N;i++)
+    {
+        if(ArmstrongNumber(i)!=null)
+        {
+            System.out.println(i);
+        }
+    }
+}
+//#endregion
+
+
+//#region 9. Perfect Square Or Not
+public static Boolean IsPerfectSquare(double n)
+{
+    int i=1;
+    while(i*i<=n)
+    {
+        i++;
+    }
+    i=i-1;
+    return ((i*i)==n);
+      /*double Squarevalue=Math.sqrt(n);
+      return (Squarevalue-Math.floor(Squarevalue)==0);
+      */
+      /*if((Squarevalue*Squarevalue)==n)
+      {
+        return true;
+      }
+      else
+      {
+          return false;
+      }*/
+      
 }
 //#endregion
 }
