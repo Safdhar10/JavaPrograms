@@ -25,8 +25,9 @@ public class Sample {
         //System.out.println(IsPerfectSquare(5));
         //#endregion
         //#region 10. Perfect Square Number between N
-        PerfectSquareBetweenN(30);
+        //PerfectSquareBetweenN(30);
         //#endregion
+
     }
 //#region 1. Maximum Number that divides all the digits of the given number
    public static int MaxNumDivides(int n) {
@@ -217,6 +218,13 @@ public static void PerfectSquareBetweenN(int N)
             System.out.println(i);
         }
     }
+}
+//#endregion
+
+//#region 11. Next Perfect Square
+public static int NextPerfectSquare(int n)
+{
+    
 }
 //#endregion
 }
