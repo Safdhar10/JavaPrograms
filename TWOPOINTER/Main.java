@@ -13,7 +13,10 @@ public class Main {
        // System.out.println(CheckXisPresentMoreThanOnce(array, 40));
         //#endregion
         //#region 4. Largest number in array
-        System.out.println(LargestNumber(array));
+        //System.out.println(LargestNumber(array));
+        //#endregion
+        //#region 5. Smallest number in array
+        System.out.println(Smallest(array));
         //#endregion
     }
     //#region 1. Reverse the array
@@ -104,6 +107,29 @@ public class Main {
             _end--;
         }
         return _max;
+    }
+    //#endregion
+
+    //#region 5. Smallest number in array
+    public static int Smallest(int[] array)
+    {
+        int _start=0;
+        int _end=array.length-1;
+        int min=Integer.MAX_VALUE;
+        while(_start<=_end)
+        {
+            if(array[_start]<min)
+            {
+                min=array[_start];
+            }
+            if(array[_end]<min)
+            {
+                min=array[_end];
+            }
+            _start++;
+            _end--;
+        }
+        return min;
     }
     //#endregion
 
