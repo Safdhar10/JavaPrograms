@@ -2,7 +2,7 @@ package TWOPOINTER;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={10,30,2,40,40,39,44};
+        int[] array={10,30,2,50,40,39,44};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -10,7 +10,10 @@ public class Main {
        // System.out.println(CheckValuePresentinTheArray(array, 40));
         //#endregion
         //#region 3.Check X is present more than one time
-        System.out.println(CheckXisPresentMoreThanOnce(array, 40));
+       // System.out.println(CheckXisPresentMoreThanOnce(array, 40));
+        //#endregion
+        //#region 4. Largest number in array
+        System.out.println(LargestNumber(array));
         //#endregion
     }
     //#region 1. Reverse the array
@@ -77,6 +80,30 @@ public class Main {
             }
         }
         return count>1?true:false;
+    }
+    //#endregion
+
+    
+    //#region 4. Largest number in array
+    public static int LargestNumber(int[] array)
+    {
+        int _start=0;
+        int _end=array.length-1;
+        int _max=Integer.MIN_VALUE;
+        while(_start<=_end)
+        {
+            if(array[_start]>_max)
+            {
+                _max=array[_start];
+            }
+            if(array[_end]>_max)
+            {
+                _max=array[_end];
+            }
+            _start++;
+            _end--;
+        }
+        return _max;
     }
     //#endregion
 
