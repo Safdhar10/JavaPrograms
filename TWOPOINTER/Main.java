@@ -1,8 +1,7 @@
 package TWOPOINTER;
-
 public class Main {
     public static void main(String[] args) {
-        int[] array={10,30,2,50,40,39,44};
+        int[] array={10,30,2,50,55,40,39,44};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -16,7 +15,10 @@ public class Main {
         //System.out.println(LargestNumber(array));
         //#endregion
         //#region 5. Smallest number in array
-        System.out.println(Smallest(array));
+       // System.out.println(Smallest(array));
+        //#endregion
+        //#region 6. Second largest Number
+        System.out.println(NthLargestNumber(array, 2));
         //#endregion
     }
     //#region 1. Reverse the array
@@ -133,4 +135,32 @@ public class Main {
     }
     //#endregion
 
+    //#region 6. Second Largest number in array
+    public static int NthLargestNumber(int[] array,int n)
+    {
+        int _max=Integer.MAX_VALUE;
+        for(int index=1;index<=n;index++)
+        {
+            int _start=0;
+            int _end=array.length-1;
+            int _currentMax=Integer.MIN_VALUE;
+            while(_start<=_end)
+            {
+                if(array[_start]>_currentMax&&array[_start]<_max)
+                {
+                    
+                    _currentMax=array[_start];
+                }
+                if(array[_end]>_currentMax&&array[_end]<_max)
+                {
+                    _currentMax=array[_end];
+                }
+                _start++;
+                _end--;
+            }
+            _max=_currentMax;
+        }
+        return _max;
+    }
+    //#endregion
 }
