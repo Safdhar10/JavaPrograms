@@ -1,9 +1,10 @@
 package TWOPOINTER;
 
+import javax.lang.model.element.Element;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={1,2,2,3,2,4,5,1};
+        int[] array={1,2,5,1};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -21,7 +22,7 @@ public class Main {
         //#endregion
         //#region 6. Second largest Number
        // System.out.println(NthLargestNumber(array, 2));
-       System.out.println(SecondLargest(array));
+       //System.out.println(SecondLargest(array));
         //#endregion
         //#region 7. Second Smallest Number
         //System.out.println(NthSmallestNumber(array,2));
@@ -32,7 +33,10 @@ public class Main {
         //#region 9. Sum of Element of Odd location is equal to Even locations
         //System.out.println(SumOfOddAndEvenLocationisEqual(array));
         //#endregion
-
+        //#region 10. Find if there exists a pair of elements
+       // System.out.println(PairofElements(array, 2));
+        //#endregion
+        //#region 11. 
     }
     //#region 1. Reverse the array
     public static void ReverseTheArray(int[] array)
@@ -282,6 +286,64 @@ public class Main {
             _oddLocationSum+=array[_firstPointer];
         }
         return _oddLocationSum==_evenLocationSum?true:false;
+    }
+    //#endregion
+
+    //#region 10. Find if there exists a pair of elements
+    public static Integer PairofElements(int[] array,int B)
+    {
+        for(int i=0;i<array.length;i++ )
+        {
+            int _find=array[i]-B;
+            for(int j=0;j<array.length;j++)
+            {
+                if(array[j]==_find)
+                {
+                    return 1;
+                }
+            }
+        }
+        return 0;
+    }
+    //#endregion
+
+    //#region 11. Find a[i]+a[j]=0
+    public static boolean SumTwoNumberisEqualToZero(int[] array)
+    {
+        for(int i=0;i<array.length;i++)
+        {
+            if(array[i]<0)
+            {
+                int _target=array[i]*-1;
+                if(BinarySearch(array, _target))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean BinarySearch(int[] array,int target)
+    {
+        int _left=0;
+        int _right=array.length-1;
+        while(_left<=_right)
+        {
+            int _midValue=(int)Math.floor((_left+_right)/2);
+            if(array[_midValue]>target)
+            {
+                _right=_midValue;
+            }
+            else if(array[_midValue]>target)
+            {
+                _left=_midValue;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
     }
     //#endregion
 
