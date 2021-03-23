@@ -29,7 +29,7 @@ public class Main {
         //System.out.println(OccuranceOfX(array,10));
         //#endregion
         //#region 9. Sum of Element of Odd location is equal to Even locations
-        System.out.println(SumOfOddAndEvenLocationisEven(array));
+        System.out.println(SumOfOddAndEvenLocationisEqual(array));
         //#endregion
     }
     //#region 1. Reverse the array
@@ -230,7 +230,7 @@ public class Main {
     //#endregion
 
     //#region 9. Sum of Element of Odd location is equal to Even locations
-    public static boolean SumOfOddAndEvenLocationisEven(int[] array)
+    public static boolean SumOfOddAndEvenLocationisEqual(int[] array)
     {
         int _firstPointer=0;
         int _secondPointer=1;
