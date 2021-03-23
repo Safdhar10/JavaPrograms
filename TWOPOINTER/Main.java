@@ -3,7 +3,7 @@ package TWOPOINTER;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={1,2,2,3,2,1};
+        int[] array={1,2,2,3,2,4,5,1};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -21,6 +21,7 @@ public class Main {
         //#endregion
         //#region 6. Second largest Number
        // System.out.println(NthLargestNumber(array, 2));
+       System.out.println(SecondLargest(array));
         //#endregion
         //#region 7. Second Smallest Number
         //System.out.println(NthSmallestNumber(array,2));
@@ -29,8 +30,9 @@ public class Main {
         //System.out.println(OccuranceOfX(array,10));
         //#endregion
         //#region 9. Sum of Element of Odd location is equal to Even locations
-        System.out.println(SumOfOddAndEvenLocationisEqual(array));
+        //System.out.println(SumOfOddAndEvenLocationisEqual(array));
         //#endregion
+
     }
     //#region 1. Reverse the array
     public static void ReverseTheArray(int[] array)
@@ -158,7 +160,6 @@ public class Main {
             {
                 if(array[_start]>_currentMax&&array[_start]<_max)
                 {
-                    
                     _currentMax=array[_start];
                 }
                 if(array[_end]>_currentMax&&array[_end]<_max)
@@ -171,6 +172,38 @@ public class Main {
             _max=_currentMax;
         }
         return _max;
+    }
+    public static int SecondLargest(int[] array)
+    {
+        int _maxElement=0;
+        int _currentMax=Integer.MIN_VALUE;
+        int _first=0;
+        int _last=array.length-1;
+        while(_first<=_last)
+        {
+            if(array[_first]>_currentMax)
+            {
+                _maxElement=_currentMax;
+                _currentMax=array[_first];
+            }
+            else if(array[_first]>_maxElement)
+            {
+                _maxElement=array[_first];
+            }
+            if(array[_last]>_currentMax)
+            {
+                _maxElement=_currentMax;
+                _currentMax=array[_last];
+            }
+            else if(array[_last]>_maxElement)
+            {
+                _maxElement=array[_last];
+            }
+
+            _first++;
+            _last--;
+        }
+        return _maxElement;
     }
     //#endregion
 
