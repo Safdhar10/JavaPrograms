@@ -1,7 +1,9 @@
 package TWOPOINTER;
+
+
 public class Main {
     public static void main(String[] args) {
-        int[] array={10,30,2,50,55,3,40,39,44};
+        int[] array={10,3,2,44,55,3,44,39,44};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -21,7 +23,10 @@ public class Main {
        // System.out.println(NthLargestNumber(array, 2));
         //#endregion
         //#region 7. Second Smallest Number
-        System.out.println(NthSmallestNumber(array,2));
+        //System.out.println(NthSmallestNumber(array,2));
+        //#endregion
+        //#region 8. Occurance of target value
+        System.out.println(OccuranceOfX(array,10));
         //#endregion
     }
     //#region 1. Reverse the array
@@ -192,6 +197,33 @@ public class Main {
             _min=_currentMin;
         }
         return _min;
+    }
+    //#endregion
+
+    //#region 8. Count the occurance of the target value in a given array
+    public static int OccuranceOfX(int[] array,int x)
+    {
+        int _start=0;
+        int _end=array.length-1;
+        int _count=0;
+        while(_start<_end)
+        {
+            if(array[_start]==x)
+            {
+                _count++;
+            }
+            if(array[_end]==x)
+            {
+                _count++;
+            }
+            _start++;
+            _end--;
+        }
+        if(_start==_end && array[_start]==x)
+        {
+            _count++;
+        }
+        return _count++;
     }
     //#endregion
 }
