@@ -4,7 +4,7 @@ import javax.lang.model.element.Element;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={1,2,5,1};
+        int[] array={-3,-2,-1,0,1,4};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -36,7 +36,9 @@ public class Main {
         //#region 10. Find if there exists a pair of elements
        // System.out.println(PairofElements(array, 2));
         //#endregion
-        //#region 11. 
+        //#region 11. a[i]+a[j]=0
+        System.out.println(SumTwoNumberisEqualToZero(array));
+        //#endregion
     }
     //#region 1. Reverse the array
     public static void ReverseTheArray(int[] array)
@@ -312,13 +314,17 @@ public class Main {
     {
         for(int i=0;i<array.length;i++)
         {
-            if(array[i]<0)
+            if(array[i]<=0)
             {
                 int _target=array[i]*-1;
                 if(BinarySearch(array, _target))
                 {
                     return true;
                 }
+            }
+            else
+            {
+                return false;
             }
         }
         return false;
@@ -332,11 +338,11 @@ public class Main {
             int _midValue=(int)Math.floor((_left+_right)/2);
             if(array[_midValue]>target)
             {
-                _right=_midValue;
+                _right=_midValue-1;
             }
-            else if(array[_midValue]>target)
+            else if(array[_midValue]<target)
             {
-                _left=_midValue;
+                _left=_midValue+1;
             }
             else
             {
