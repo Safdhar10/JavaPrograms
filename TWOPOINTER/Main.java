@@ -1,13 +1,9 @@
 package TWOPOINTER;
 
-import java.io.Console;
-
-import javax.lang.model.element.Element;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.CloseAction;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={1,2,3,5,5,6,7};
+        int[] array={1,5,5,6,7};
         int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -47,10 +43,10 @@ public class Main {
         //IntersectionOfTwoSortedArrays(array,array2);
         //#endregion
         //#region 15. Pair of Number with Sum Equal to X
-        //PairOfNumberEqualToX(array, 10);
+        PairOfNumberEqualToX(array, 10);
         //#endregion
         //#region 16. Pair of number with Sum Closest to X
-        PairOfNumberClosestToX(array, 4);
+        //PairOfNumberClosestToX(array, 4);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -393,19 +389,26 @@ public class Main {
     //#region 15. Pair of Number with Sum Equal to X
     public static boolean PairOfNumberEqualToX(int[] array,int X)
     {
-        if(array[0]==X)
+        if(array[0]>=X)
         {
             return false;
         }
-        for(int i=0;i<array.length-1;i++)
-        {
-            for(int j=i+1;j<array.length;j++)
+        int _left=0;
+        int _right=array.length-1;
+        while(_left<_right)
+        { 
+            if((array[_left]+array[_right])<X)
             {
-                if((array[i]+array[j])==X)
-                {
-                    System.out.println("("+array[i]+","+array[j]+") pair is equal to "+X);
-                    return true;
-                }
+                _left++;
+            }
+            else if((array[_left]+array[_right])>X)
+            {
+                _right--;
+            }
+            else
+            {
+                System.out.println("("+array[_left]+","+array[_right]+") is Equal to "+X);
+                return true;
             }
         }
         System.out.println("No Pair is exist to Equal "+X);
@@ -441,6 +444,12 @@ public class Main {
             }
         }
         System.out.println("("+_rightElement+","+_leftElement+") : "+_sum+" which is Closest To "+X);
+    }
+    //#endregion
+    //#region 17. Triplet with sum Equal to X
+    public static void TripletSumEqualToX(int[] array,int x) 
+    {
+        
     }
     //#endregion
 }
