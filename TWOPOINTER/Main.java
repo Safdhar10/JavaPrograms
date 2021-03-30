@@ -2,7 +2,8 @@ package TWOPOINTER;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         int[] array={-2,-1,0,1,3,5,5,6,7};
         int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
@@ -49,7 +50,10 @@ public class Main {
         //PairOfNumberClosestToX(array, 5);
         //#endregion
         //#region 17. Triplet with sum Equal to X
-        TripletSumEqualToX(array, 10);
+        //TripletSumEqualToX(array, 10);
+        //#endregion
+        //#region 18. MergeTwoSortedArray
+        MergeTwoSortedArray(array, array2);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -498,6 +502,42 @@ public class Main {
             }
         }
         System.out.println("No Triplet is Equal to "+x);
+    }
+    //#endregion
+
+    //#region 18. Merge Two Sorted Array as One Sorted Array
+    public static void MergeTwoSortedArray(int[] array1,int[] array2) 
+    {
+        int _array1Length=array1.length;
+        int _array2Length=array2.length;
+        int[] newArray=new int[_array1Length+_array2Length];
+        int _a1=0;
+        int _a2=0;
+        int _newIndex=0;
+        while(_a1<array1.length && _a2<array2.length)
+            {
+                if(array1[_a1]<=array2[_a2])
+                {
+                    newArray[_newIndex++]=array1[_a1++];
+                }
+                else
+                {
+                    newArray[_newIndex++]=array2[_a2++];
+                }
+            }
+        while(_a2<array2.length)
+            {
+                newArray[_newIndex++]=array2[_a2++];
+            }
+        while(_a1<array1.length)
+            {
+                newArray[_newIndex++]=array1[_a1++];
+            }
+            for (int i : newArray) {
+                System.out.print(i+" ");
+            }
+    
+        
     }
     //#endregion
 }
