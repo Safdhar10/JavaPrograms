@@ -3,7 +3,7 @@ package TWOPOINTER;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={0,1,3,5,5,6,7};
+        int[] array={-3,-2,-1,0,1,3,5,5,6,7};
         int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -37,7 +37,7 @@ public class Main {
        // System.out.println(PairofElements(array, 2));
         //#endregion
         //#region 11. a[i]+a[j]=0
-        //System.out.println(SumTwoNumberisEqualToZero(array));
+        System.out.println(SumTwoNumberisEqualToZero(array));
         //#endregion
         //#region 12. Intersection of Two Sorted Arrays
         //IntersectionOfTwoSortedArrays(array,array2);
@@ -46,7 +46,7 @@ public class Main {
         //PairOfNumberEqualToX(array, 10);
         //#endregion
         //#region 16. Pair of number with Sum Closest to X
-        PairOfNumberClosestToX(array, 5);
+        //PairOfNumberClosestToX(array, 5);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -321,12 +321,37 @@ public class Main {
     //#region 11. Find a[i]+a[j]=0
     public static boolean SumTwoNumberisEqualToZero(int[] array)
     {
-        for(int i=0;i<array.length;i++)
+        /*for(int i=0;i<array.length;i++)
         {
             if(array[i]<=0)
             {
                 int _target=array[i]*-1;
                 if(BinarySearch(array, _target))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;*/
+        int _left=0;
+        int _right=array.length-1;
+        while(_left<_right)
+        {
+            if(array[_left]<=0)
+            {
+                if((array[_left]+array[_right])<0)
+                {
+                    _left++;
+                }
+                else if((array[_left]+array[_right])>0)
+                {
+                    _right--;
+                }
+                else
                 {
                     return true;
                 }
