@@ -3,7 +3,7 @@ package TWOPOINTER;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={-3,-2,-1,0,1,3,5,5,6,7};
+        int[] array={-2,-1,0,1,3,5,5,6,7};
         int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -34,10 +34,10 @@ public class Main {
         //System.out.println(SumOfOddAndEvenLocationisEqual(array));
         //#endregion
         //#region 10. Find if there exists a pair of elements
-       // System.out.println(PairofElements(array, 2));
+        // System.out.println(PairofElements(array, 2));
         //#endregion
         //#region 11. a[i]+a[j]=0
-        System.out.println(SumTwoNumberisEqualToZero(array));
+        //System.out.println(SumTwoNumberisEqualToZero(array));
         //#endregion
         //#region 12. Intersection of Two Sorted Arrays
         //IntersectionOfTwoSortedArrays(array,array2);
@@ -47,6 +47,9 @@ public class Main {
         //#endregion
         //#region 16. Pair of number with Sum Closest to X
         //PairOfNumberClosestToX(array, 5);
+        //#endregion
+        //#region 17. Triplet with sum Equal to X
+        TripletSumEqualToX(array, 10);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -473,7 +476,28 @@ public class Main {
     //#region 17. Triplet with sum Equal to X
     public static void TripletSumEqualToX(int[] array,int x) 
     {
-        
+        for(int i=0;i<array.length-2;i++)
+        {
+            int _left=i+1;
+            int _right=array.length-1;
+            while(_left<_right)
+            {
+                if((array[i]+array[_left]+array[_right])<x)
+                {
+                    _left++;
+                }
+                else if((array[i]+array[_left]+array[_right])>x)
+                {
+                    _right--;
+                }
+                else 
+                {
+                    System.out.println("("+array[i]+","+array[_left]+","+array[_right]+") is Equal to "+x);
+                    return ;
+                }
+            }
+        }
+        System.out.println("No Triplet is Equal to "+x);
     }
     //#endregion
 }
