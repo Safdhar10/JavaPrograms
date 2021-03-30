@@ -1,10 +1,13 @@
 package TWOPOINTER;
 
+import java.io.Console;
+
 import javax.lang.model.element.Element;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={-3,-2,-1,0,1,4};
+        int[] array={-3,-2,-1,0,5,7};
+        int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -37,7 +40,10 @@ public class Main {
        // System.out.println(PairofElements(array, 2));
         //#endregion
         //#region 11. a[i]+a[j]=0
-        System.out.println(SumTwoNumberisEqualToZero(array));
+        //System.out.println(SumTwoNumberisEqualToZero(array));
+        //#endregion
+        //#region 12. Intersection of Two Sorted Arrays
+        IntersectionOfTwoSortedArrays(array,array2);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -353,5 +359,29 @@ public class Main {
     }
     //#endregion
 
+    //#region 12. IntersectionOfTwoSortedArrays
+    public static void IntersectionOfTwoSortedArrays(int[] array1,int[] array2)
+    {
+        int _array1Length=array1.length;
+        int _array2Length=array2.length;
+        int _array1Point=0;
+        int _array2Point=0;
+        while(_array1Point<_array1Length && _array2Point<_array2Length)
+        {
+            if(array1[_array1Point] < array2[_array2Point])
+                _array1Point++;
+            else if(array1[_array1Point] > array2[_array2Point])
+                _array2Point++;
+            else
+            {
+                System.out.print(array2[_array2Point]+" ");
+                _array1Point++;
+            }
 
+        }
+        System.out.println();
+    }
+    //#endregion
+
+    //#region 13
 }
