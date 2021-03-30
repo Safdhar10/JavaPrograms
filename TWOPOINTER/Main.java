@@ -6,7 +6,7 @@ import javax.lang.model.element.Element;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={-3,-2,-1,0,5,7};
+        int[] array={1,2,3,5,5,6,7};
         int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -43,7 +43,10 @@ public class Main {
         //System.out.println(SumTwoNumberisEqualToZero(array));
         //#endregion
         //#region 12. Intersection of Two Sorted Arrays
-        IntersectionOfTwoSortedArrays(array,array2);
+        //IntersectionOfTwoSortedArrays(array,array2);
+        //#endregion
+        //#region 15. Pair of Number with Sum Equal to X
+        PairOfNumberEqualToX(array, 10);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -383,5 +386,26 @@ public class Main {
     }
     //#endregion
 
-    //#region 13
+    //#region 15. Pair of Number with Sum Equal to X
+    public static boolean PairOfNumberEqualToX(int[] array,int X)
+    {
+        if(array[0]==X)
+        {
+            return false;
+        }
+        for(int i=0;i<array.length-1;i++)
+        {
+            for(int j=i+1;j<array.length;j++)
+            {
+                if((array[i]+array[j])==X)
+                {
+                    System.out.println("("+array[i]+","+array[j]+") pair is equal to "+X);
+                    return true;
+                }
+            }
+        }
+        System.out.println("No Pair is exist to Equal "+X);
+        return false;
+    }
+    //#endregion
 }
