@@ -3,7 +3,7 @@ package TWOPOINTER;
 
 public class Main {
     public static void main(String[] args) {
-        int[] array={1,5,5,6,7};
+        int[] array={0,1,3,5,5,6,7};
         int[] array2={-1,1,2,3,5,7};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -43,10 +43,10 @@ public class Main {
         //IntersectionOfTwoSortedArrays(array,array2);
         //#endregion
         //#region 15. Pair of Number with Sum Equal to X
-        PairOfNumberEqualToX(array, 10);
+        //PairOfNumberEqualToX(array, 10);
         //#endregion
         //#region 16. Pair of number with Sum Closest to X
-        //PairOfNumberClosestToX(array, 4);
+        PairOfNumberClosestToX(array, 5);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -419,31 +419,30 @@ public class Main {
     //#region 16. Pair of numbers with sum Closest to X
     public static void PairOfNumberClosestToX(int[] array,int X) 
     {
-        int _rightElement=0;
-        int _leftElement=0;
-        int _sum=0;
-        for(int i=0;i<array.length-1;i++)
-        {
-            int _closesttoX=Integer.MIN_VALUE;
-            for(int j=i+1;j<array.length;j++)
+            int _rightElement=0;
+            int _leftElement=0;
+            int _sum=0;
+            int _left=0;
+            int _right=array.length-1;
+            while(_left<_right)
             {
-                int temp=(array[i]+array[j]);
+                int temp=(array[_left]+array[_right]);
                 if(temp<X)
                 {
-                    if(temp>_closesttoX)
+                    if(temp>_sum)
                     {
-                        _rightElement=array[i];
-                        _leftElement=array[j];
+                        _leftElement=_left;
+                        _rightElement=_right;
                         _sum=temp;
                     }
+                    _left++;
                 }
                 else
                 {
-                    break;
+                    _right--;
                 }
             }
-        }
-        System.out.println("("+_rightElement+","+_leftElement+") : "+_sum+" which is Closest To "+X);
+        System.out.println("("+array[_leftElement]+","+array[_rightElement]+") : "+_sum+" which is Closest To "+X);
     }
     //#endregion
     //#region 17. Triplet with sum Equal to X
