@@ -3,6 +3,7 @@ package TWOPOINTER;
 import java.io.Console;
 
 import javax.lang.model.element.Element;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.CloseAction;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,7 +47,10 @@ public class Main {
         //IntersectionOfTwoSortedArrays(array,array2);
         //#endregion
         //#region 15. Pair of Number with Sum Equal to X
-        PairOfNumberEqualToX(array, 10);
+        //PairOfNumberEqualToX(array, 10);
+        //#endregion
+        //#region 16. Pair of number with Sum Closest to X
+        PairOfNumberClosestToX(array, 4);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -406,6 +410,37 @@ public class Main {
         }
         System.out.println("No Pair is exist to Equal "+X);
         return false;
+    }
+    //#endregion
+
+    //#region 16. Pair of numbers with sum Closest to X
+    public static void PairOfNumberClosestToX(int[] array,int X) 
+    {
+        int _rightElement=0;
+        int _leftElement=0;
+        int _sum=0;
+        for(int i=0;i<array.length-1;i++)
+        {
+            int _closesttoX=Integer.MIN_VALUE;
+            for(int j=i+1;j<array.length;j++)
+            {
+                int temp=(array[i]+array[j]);
+                if(temp<X)
+                {
+                    if(temp>_closesttoX)
+                    {
+                        _rightElement=array[i];
+                        _leftElement=array[j];
+                        _sum=temp;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        System.out.println("("+_rightElement+","+_leftElement+") : "+_sum+" which is Closest To "+X);
     }
     //#endregion
 }
