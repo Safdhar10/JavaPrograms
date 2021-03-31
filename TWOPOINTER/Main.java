@@ -551,7 +551,7 @@ public class Main {
         int _a1=array1.length-1;
         int _a2=array2.length-1;
         int[] newArray=new int[_a1+_a2+2];
-        for(int index=_a1+_a2+1;index>=0;index--)
+        /*for(int index=_a1+_a2+1;index>=0;index--)
         {
             if(_a1<0)
             {
@@ -570,10 +570,42 @@ public class Main {
                 newArray[index]=array2[_a2--];
             }
         }
+        array2=newArray;*/
+        for(int i=0;i<array2.length;i++)
+        {
+            newArray[i]=array2[i];
+        }
         array2=newArray;
+        int index=array2.length-1;
+        while(_a1>=0 && _a2>=0)
+        {
+            if(array1[_a1]>array2[_a2])
+            {
+                array2[index--]=array1[_a1--];
+            }
+            else
+            {
+                array2[index--]=array2[_a2--];
+            }
+        }
+        while(_a1>=0)
+        {
+            array2[index--]=array1[_a1--];
+        }
+        while(_a2>=0)
+        {
+            array2[index--]=array2[_a2--];
+        }
         for (int k : array2) {
             System.out.print(k+" ");
         }
+    }
+    //#endregion
+
+    //#region 20. Unique Triplets in the array which gives the sum of zero
+    public static void TripletsisEqualToZero(int[] array)
+    {
+        
     }
     //#endregion
 }
