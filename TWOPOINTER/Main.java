@@ -1,11 +1,12 @@
 package TWOPOINTER;
 
+import org.graalvm.compiler.nodes.java.NewArrayNode;
 
 public class Main {
     public static void main(String[] args) 
     {
         int[] array={-2,-1,0,1,3,5,5,6,7};
-        int[] array2={-1,1,2,3,5,7};
+        int[] array2={7,8,9};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
         //#endregion
@@ -53,7 +54,10 @@ public class Main {
         //TripletSumEqualToX(array, 10);
         //#endregion
         //#region 18. MergeTwoSortedArray
-        MergeTwoSortedArray(array, array2);
+        //MergeTwoSortedArray(array, array2);
+        //#endregion
+        //#region 19. Merge A and B array into B
+        MergeAandB(array,array2);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -538,6 +542,38 @@ public class Main {
             }
     
         
+    }
+    //#endregion
+
+    //#region 19. Merage A and B array into B array
+    public static void MergeAandB(int[] array1,int[] array2) 
+    {
+        int _a1=array1.length-1;
+        int _a2=array2.length-1;
+        int[] newArray=new int[_a1+_a2+2];
+        for(int index=_a1+_a2+1;index>=0;index--)
+        {
+            if(_a1<0)
+            {
+                newArray[index]=array2[_a2--];
+            }
+            else if(_a2<0)
+            {
+                newArray[index]=array1[_a1--];
+            }
+            else if(_a1>=0 && array1[_a1]>array2[_a2])
+            {
+                newArray[index]=array1[_a1--];
+            }
+            else
+            {
+                newArray[index]=array2[_a2--];
+            }
+        }
+        array2=newArray;
+        for (int k : array2) {
+            System.out.print(k+" ");
+        }
     }
     //#endregion
 }
