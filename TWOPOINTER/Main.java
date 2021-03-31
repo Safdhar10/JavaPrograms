@@ -57,7 +57,10 @@ public class Main {
         //MergeTwoSortedArray(array, array2);
         //#endregion
         //#region 19. Merge A and B array into B
-        MergeAandB(array,array2);
+        //MergeAandB(array,array2);
+        //#endregion
+        //#region 20. Unique Triplets in the array which gives the sum of zero
+        TripletsisEqualToZero(array);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -605,7 +608,33 @@ public class Main {
     //#region 20. Unique Triplets in the array which gives the sum of zero
     public static void TripletsisEqualToZero(int[] array)
     {
-        
+        boolean check=false;
+        for(int i=0;i<array.length-2;i++)
+        {
+            if(array[i]<=0)
+            {
+                int _left=i+1;
+                int _right=array.length-1;
+                while(_left<_right)
+                {
+                    if((array[i]+array[_left]+array[_right])<0)
+                    {
+                        _left++;
+                    }
+                    else if((array[i]+array[_left]+array[_right])>0)
+                    {
+                        _right--;
+                    }
+                    else 
+                    {
+                        check=true;
+                        System.out.println("("+array[i]+","+array[_left++]+","+array[_right++]+") is Equal to 0");
+                    }
+                }
+            }
+            
+        }
+        System.out.print(!check?"No Triplet is Sum 0":"");
     }
     //#endregion
 }
