@@ -1,11 +1,14 @@
 package TWOPOINTER;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import org.graalvm.compiler.nodes.java.NewArrayNode;
 
 public class Main {
     public static void main(String[] args) 
     {
-        int[] array={-2,-1,0,1,3,5,5,6,7};
+        int[] array={1,1,2,3,4,4,5,6,7,8,8,9};
         int[] array2={7,8,9};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -44,6 +47,9 @@ public class Main {
         //#region 12. Intersection of Two Sorted Arrays
         //IntersectionOfTwoSortedArrays(array,array2);
         //#endregion
+        //#region 13. Remove Duplicate such that appears only once
+        RemoveDuplicateSuchthatAppearOnlyOnce(array);
+        //#endregion
         //#region 15. Pair of Number with Sum Equal to X
         //PairOfNumberEqualToX(array, 10);
         //#endregion
@@ -60,7 +66,7 @@ public class Main {
         //MergeAandB(array,array2);
         //#endregion
         //#region 20. Unique Triplets in the array which gives the sum of zero
-        TripletsisEqualToZero(array);
+        //TripletsisEqualToZero(array);
         //#endregion
     }
     //#region 1. Reverse the array
@@ -425,6 +431,35 @@ public class Main {
     }
     //#endregion
 
+    //#region 13. Remove Duplicate Such that appears only once
+    public static void RemoveDuplicateSuchthatAppearOnlyOnce(int[] array)
+    {
+        int _newLength=0;
+        for(int _curretnPointer=0;_curretnPointer<array.length;_curretnPointer++)
+        {
+            if(_curretnPointer==array.length-1)
+            {
+                array[_newLength]=array[_curretnPointer];
+                break;
+            }
+            if(array[_curretnPointer]!=array[_curretnPointer+1])
+            {
+                array[_newLength++]=array[_curretnPointer];
+            }
+        }
+        for(int i=0;i<=_newLength;i++)
+        {
+            System.out.print(array[i]+" ");
+        }
+        /*int[] temp=new int[_newLength+1];
+        for(int i=0;i<=_newLength;i++)
+        {
+            temp[i]=array[i];
+        }
+        array=temp;
+        System.out.println(Arrays.toString(array));*/
+    }
+    //#endregion
     //#region 15. Pair of Number with Sum Equal to X
     public static boolean PairOfNumberEqualToX(int[] array,int X)
     {
