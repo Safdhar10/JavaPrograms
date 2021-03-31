@@ -8,7 +8,7 @@ import org.graalvm.compiler.nodes.java.NewArrayNode;
 public class Main {
     public static void main(String[] args) 
     {
-        int[] array={1,1,2,3,4,4,5,6,7,8,8,9};
+        int[] array={1,1,1,2,3,3,3,3,4,4,5,6,7,8,8,9};
         int[] array2={7,8,9};
         //#region 1. Reverse the array
        // ReverseTheArray(array);
@@ -48,7 +48,10 @@ public class Main {
         //IntersectionOfTwoSortedArrays(array,array2);
         //#endregion
         //#region 13. Remove Duplicate such that appears only once
-        RemoveDuplicateSuchthatAppearOnlyOnce(array);
+        //RemoveDuplicateSuchthatAppearOnlyOnce(array);
+        //#endregion
+        //#region 14. Remove Duplicate Such that appear atmost Twice
+        RemoveDuplicateSuchthatAppearAtmostTwice(array);
         //#endregion
         //#region 15. Pair of Number with Sum Equal to X
         //PairOfNumberEqualToX(array, 10);
@@ -439,7 +442,7 @@ public class Main {
         {
             if(_curretnPointer==array.length-1)
             {
-                array[_newLength]=array[_curretnPointer];
+                array[_newLength++]=array[_curretnPointer];
                 break;
             }
             if(array[_curretnPointer]!=array[_curretnPointer+1])
@@ -447,17 +450,53 @@ public class Main {
                 array[_newLength++]=array[_curretnPointer];
             }
         }
-        for(int i=0;i<=_newLength;i++)
+        for(int i=0;i<_newLength;i++)
         {
             System.out.print(array[i]+" ");
         }
-        /*int[] temp=new int[_newLength+1];
-        for(int i=0;i<=_newLength;i++)
+        /*int[] temp=new int[_newLength];
+        for(int i=0;i<_newLength;i++)
         {
             temp[i]=array[i];
         }
         array=temp;
         System.out.println(Arrays.toString(array));*/
+        System.out.println("New Length is : "+_newLength);
+    }
+    //#endregion
+    
+    //#region 14. Remove Duplicate Such that appear atmost Twice
+    public static void RemoveDuplicateSuchthatAppearAtmostTwice(int[] array) 
+    {
+        int _newLength=0;
+        int _count=0;
+        for(int _currentPointer=0;_currentPointer<array.length;_currentPointer++)
+        {
+            if(_currentPointer==array.length-1)
+            {
+                array[_newLength++]=array[_currentPointer];
+                break;
+            }
+            if(array[_currentPointer]==array[_currentPointer+1])
+            {
+                _count++;
+                if(_count==1)
+                {
+                    array[_newLength++]=array[_currentPointer];
+                }
+            }
+            else
+            {
+                _count=0;
+                array[_newLength++]=array[_currentPointer];
+            }
+        }
+        for(int i=0;i<_newLength;i++)
+        {
+            System.out.print(array[i]+" ");
+        }
+        System.out.println("New Length is : "+_newLength);
+
     }
     //#endregion
     //#region 15. Pair of Number with Sum Equal to X
