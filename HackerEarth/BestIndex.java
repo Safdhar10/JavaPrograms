@@ -8,34 +8,35 @@ public class BestIndex {
         int n=Integer.parseInt(sc.nextLine());
 
         long[] _inputArray=new long[n];
-        long[] _sumArray=new long[n+1];
 
         for(int i=0;i<n;i++)
         {
             _inputArray[i]=sc.nextLong();
         }
-
-        for(int i=1;i<n+1;i++)
-        {
-            _sumArray[i]=_inputArray[i-1]+_sumArray[i-1];
-        }
-
+        
         long max=Integer.MIN_VALUE;
 
-        for(int i=1;i<n+1;i++)
+        for(int i=0;i<n;i++)
         {
             long Sum=0;
             int _toRun=1;
-            int  _tempIndex=i;
 
-            while(_tempIndex+_toRun<n)
+            int  _tempIndex=i;
+            int left=n-i;
+
+            while(left>0)
             {
+                for(int k=0;k<_toRun;k++)
+                {
+                    Sum=Sum+_inputArray[_tempIndex++];
+                }
                 _toRun=_toRun+1;
-                _tempIndex+=_toRun;
+                left-=_toRun;
             }
-            Sum=_sumArray[_tempIndex]-_sumArray[i-1];
-            
-            max=Math.max(max, Sum);
+            if(max<Sum)
+            {
+                max=Sum;
+            }
         }
         
         System.out.println(max);
