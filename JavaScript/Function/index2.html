@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function showOK()
+            {
+                alert("You agreed");
+            }
+            function showNo()
+            {
+                alert("You Cancel");
+            }
+            function ask(question,yes,no)
+            {
+                if(confirm(question)) yes();
+                else no();
+            }
+            ask("Are Sure?",showOK,showNo);
+        </script>
+    </body>
+</html>
