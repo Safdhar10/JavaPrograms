@@ -28,6 +28,16 @@
         }
         let w=withoutnew("Ashupa");
         alert(w.name);
+
+
+        //By the way, we can omit parentheses after new, if it has no arguments:
+
+        function User2()
+        {
+            this.name="S";
+        }
+        let user2=new User2;
+        alert(user2.name);
     </script>
 </body>
 </html>
