@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function User(name){
+            this.name=name;
+            this.admin=false;
+        }
+        let user=new User("Safdhar"); //using new means calling by constructor
+
+        alert(user.name);  
+
+        //if we not use new keyword the function is work like that
+
+
+        function withoutnew(name){
+            if(!new.target)
+            {
+                return new withoutnew(name);
+            }
+            
+            this.name=name;
+        }
+        let w=withoutnew("Ashupa");
+        alert(w.name);
+    </script>
+</body>
+</html>
